@@ -52,7 +52,7 @@ btn.addEventListener('click', () => {
       clearInterval(timer);
     }
   };
-  const timer = setInterval(showSecond, 100);
+  const timer = setInterval(showSecond, 1000);
 })
 
 

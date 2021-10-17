@@ -1,0 +1,61 @@
+@charset "UTF-8";
+@font-face {
+  font-family: "fontello";
+  src: url("../fonts/fontello.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+html {
+  box-sizing: border-box;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
+.timer__inner {
+  width: 280px;
+  height: 250px;
+  margin: 200px auto;
+  padding: 45px;
+}
+
+.timer__main {
+  position: relative;
+  width: 270px;
+  height: 80px;
+  border: 1px solid black;
+  text-align: center;
+}
+
+.timer__main-clock {
+  font-family: "Roboto Condensed", sans-serif;
+  font-size: 58px;
+  padding-top: 5px;
+}
+
+.timer-btn {
+  width: 270px;
+  height: 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+
+input {
+  width: 120px;
+  height: 35px;
+  padding-left: 10px;
+}
+
+button {
+  width: 120px;
+  height: 35px;
+  margin-right: 0px;
+}
+
+button::before {
+  content: "";
+  font-family: "fontello";
+}/*# sourceMappingURL=main.css.map */

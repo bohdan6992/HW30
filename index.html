@@ -4,20 +4,26 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="./styles/main.css">
-  <title>Timer</title>
+  <title>GAME</title>
 </head>
   <body>
-    <div class="timer__inner">
-      <div class="timer__main">
-          <div class="timer__main-clock ">
-              00:00:00
-          </div>
+    <div class="game">
+      <div class="game__window">
+        <div class="game__window-ball"></div>
       </div>
-      <div class="timer-btn">
-          <input class="time-inp" type="time">
-          <button class="play-btn"></button>
+      <div class="game__actions">
+        <div class="game__actions-btns">
+          <button class="game__actions-btns_btn">START</button>
+          <select size = "1" multiole name = "SPEED" class="game__actions-btns_select">
+            SPEED
+            <option value="X1">SPEED X1</option>
+            <option value="X2">SPEED X2</option>
+          </select>
+        </div>
+        <div class="game__actions-score">Youor score is</div>
       </div>
     </div>
+
     
     <script type="text/javascript" src="./js/main.js"></script>
   </body>

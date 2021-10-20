@@ -1,61 +1,55 @@
-@charset "UTF-8";
-@font-face {
-  font-family: "fontello";
-  src: url("../fonts/fontello.woff2") format("woff2");
-  font-weight: normal;
-  font-style: normal;
-}
-html {
-  box-sizing: border-box;
-}
-
-*, *::before, *::after {
-  box-sizing: inherit;
-}
-
-.timer__inner {
-  width: 280px;
-  height: 250px;
-  margin: 200px auto;
-  padding: 45px;
-}
-
-.timer__main {
-  position: relative;
-  width: 270px;
-  height: 80px;
-  border: 1px solid black;
-  text-align: center;
-}
-
-.timer__main-clock {
-  font-family: "Roboto Condensed", sans-serif;
-  font-size: 58px;
-  padding-top: 5px;
-}
-
-.timer-btn {
-  width: 270px;
-  height: 50px;
+.game {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+}
+.game__window {
   position: relative;
+  width: 75%;
+  height: 95vh;
+  border: 1px solid black;
+  font-size: 50px;
+  vertical-align: middle;
+  text-align: center;
+  color: red;
 }
-
-input {
+.game__window-ball {
+  width: 100px;
+  height: 100px;
+  border: 1px solid black;
+  border-radius: 100%;
+  transition: 0.5s linear transform;
+  position: absolute;
+  background-color: green;
+}
+.game__actions {
+  width: 20%;
+  height: 95vh;
+  border: 1px solid black;
+}
+.game__actions-btns {
+  display: flex;
+  justify-content: space-between;
+}
+.game__actions-btns_btn {
   width: 120px;
-  height: 35px;
-  padding-left: 10px;
+  height: 50px;
+  background-color: blueviolet;
 }
-
-button {
+.game__actions-btns_select {
+  text-align: center;
   width: 120px;
-  height: 35px;
-  margin-right: 0px;
+  height: 50px;
+  background-color: blueviolet;
 }
-
-button::before {
-  content: "";
-  font-family: "fontello";
+.game__actions-score {
+  margin-top: 50px;
+  text-align: center;
+  width: 100%;
+  background-color: blueviolet;
+}
+.game__actions-reload {
+  text-align: center;
+  width: 40%;
+  height: 50px;
+  background-color: blueviolet;
 }/*# sourceMappingURL=main.css.map */

@@ -1,59 +1,36 @@
+const btn = document.querySelector('.game__actions-btns_btn');
+const ball = document.querySelector('.game__window-ball');
+const score = document.querySelector('.game__actions-score');
+const wind = document.querySelector('.game__window');
+const width = wind.clientWidth - ball.clientWidth;
+const height = wind.clientHeight - ball.clientHeight;
 
-const main = document.querySelector('.timer__main-clock')
-const btn = document.querySelector('.play-btn')
-let time = document.querySelector('.time-inp');
-
-
-btn.addEventListener('click', () => {
-  time = document.querySelector('.time-inp').value;
-
-  let dateInp = time.split(':');
-
-  let hoursInp = dateInp[0];
-  hoursInp  = Number(hoursInp * 3600);
-
-
-  let minutesInp =  dateInp[1];
-  minutesInp  = Number(minutesInp * 60);
-
-  let timeInp = hoursInp + minutesInp;
-
-  const dateNow = new Date();
-
-  let hoursNow = dateNow.getHours();
-  hoursNow *= 3600;
-
-  let minutesNow =  dateNow.getMinutes();
-  minutesNow *= 60;
-
-  let timeNow = hoursNow + minutesNow;
-
-  let timeResult = timeInp - timeNow;
-
-  let hoursResult = Math.floor((timeResult) / 60 / 60);
-  console.log(hoursResult);
-  let minuteResult =  Math.floor((timeResult) / 60) - (hoursResult * 60);
-  let secondsResult = 0;
-
-  const showSecond = () => {
-
-    let formattedTime = hoursResult + ':' + minuteResult + ':' + secondsResult;
-    main.innerText = formattedTime;
-    secondsResult--;
-    if(secondsResult <= 0 && minuteResult > 0){
-      minuteResult--;
-      secondsResult = 60;
-    }else if(minuteResult <= 0 && hoursResult > 0){
-      hoursResult--;
-      minuteResult = 59;
-      secondsResult = 60;
-    }else if(hoursResult <= 0 && minuteResult <= 0 && secondsResult <= 0){
-      main.innerText = 'End';
-      clearInterval(timer);
-    }
+btn.addEventListener("click", () => {
+  const ballMoving = () => {
+    let randY = Math.floor((Math.random() * (height - 1)) + 1);
+    let randX = Math.floor((Math.random() * (width - 1)) + 1);
+    ball.style.transform = `translate(${randX}px, ${randY}px)`;
   };
-  const timer = setInterval(showSecond, 1000);
-})
+
+  let clickCount = 0;
+  ball.addEventListener("mousedown", () => {
+    clickCount++;
+    score.innerText =`Youor score is : ${clickCount}`;
+    if (clickCount === 50){
+      wind.innerHTML =`
+      <h1>YOU WIN!!!</h1>
+      <input class="game__actions-reload" type="button" onclick="window.location.reload();" value="Try again" />`;
+      score.innerText ='GAME OWER';
+    }
+    ball.style.backgroundColor = 'red';
+  });
+  ball.addEventListener("mouseup", () => {
+    ball.style.backgroundColor = 'green';
+  });
+
+  setInterval(ballMoving, 1000);
+});
+
 
 
 

@@ -1,43 +1,70 @@
-const btn = document.querySelector('.game__actions-btns_btn');
-const ball = document.querySelector('.game__window-ball');
+const btn = document.querySelector('.game__actions-btn');
 const score = document.querySelector('.game__actions-score');
-const wind = document.querySelector('.game__window');
-const h1 = document.querySelector('.game__window-h1');
-const width = wind.clientWidth - ball.clientWidth;
-const height = wind.clientHeight - ball.clientHeight;
+const board = document.querySelector('.game__board');
 
-// const select = document.querySelector('.game__actions-btns_select').value;
-// if (select === 'SPEED X2'){
-//   ball.style.transition = '0.1s';
-// }
+for(i = 0; i < 100; i++){
+  let box = document.createElement('div');
+  box.className = 'game__board-box';
+  board.appendChild(box);  
+}
 
-btn.addEventListener("click", () => {
-  ball.style.visibility = 'visible';
-  h1.style.display = 'none';
-  const ballMoving = () => {
-    let randY = Math.floor((Math.random() * (height - 1)) + 1);
-    let randX = Math.floor((Math.random() * (width - 1)) + 1);
-    ball.style.transform = `translate(${randX}px, ${randY}px)`;
-  };
+const boxes = document.querySelectorAll('.game__board-box');
 
-  let clickCount = 0;
-  ball.addEventListener("mousedown", () => {
+const randomInteger = (min, max) => {
+  let rand = min - 0.5 + Math.random() * (max - min + 1);
+  return Math.round(rand);
+}
+
+let clickCount = 0;
+const startClikcFunc = () => {
+  btn.removeEventListener("click", startClikcFunc);
+  const randIndex = randomInteger(0, (boxes.length-1));
+  const randBox = boxes[randIndex];
+
+  randBox.style.backgroundColor = 'blue';
+
+  const boxClikcFunc = () => {
+    randBox.removeEventListener("click", startClikcFunc);
+    randBox.style.backgroundColor = 'white';
     clickCount++;
     score.innerText =`Youor score is : ${clickCount}`;
-    if (clickCount === 5){
-      wind.innerHTML =`
-      <h1>YOU WIN!!!</h1>
-      <input class="game__actions-reload" type="button" onclick="window.location.reload();" value="Try again" />`;
-      score.innerText ='GAME OWER';
-    }
-    ball.style.backgroundColor = 'red';
-  });
-  ball.addEventListener("mouseup", () => {
-    ball.style.backgroundColor = 'green';
-  });
+    randBox.removeEventListener("click", boxClikcFunc);
+  }
+  randBox.addEventListener("click", startClikcFunc);
+  randBox.addEventListener("click", boxClikcFunc);
+}
 
-  setInterval(ballMoving, 1000);
-});
+
+btn.addEventListener("click", startClikcFunc);
+
+  
+  // randBox.class.add()
+    
+
+  // `
+  // <div class="game__board-box_blue"></div>`
+  // const celectBlock = () => {
+  //   let randBlock = Math.floor((Math.random() * (100 - 1)) + 1);
+  //   ball.style.transform = `translate(${randX}px, ${randY}px)`;
+  // };
+
+  // let clickCount = 0;
+  // ball.addEventListener("mousedown", () => {
+  //   clickCount++;
+  //   score.innerText =`Youor score is : ${clickCount}`;
+  //   if (clickCount === 50){
+  //     wind.innerHTML =`
+  //     <h1>YOU WIN!!!</h1>
+  //     <input class="game__actions-reload" type="button" onclick="window.location.reload();" value="Try again" />`;
+  //     score.innerText ='GAME OWER';
+  //   }
+  //   ball.style.backgroundColor = 'red';
+  // });
+  // ball.addEventListener("mouseup", () => {
+  //   ball.style.backgroundColor = 'green';
+  // });
+
+  // setInterval(ballMoving, 1000);
 
 
 

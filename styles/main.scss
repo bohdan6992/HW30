@@ -1,43 +1,40 @@
 .game{
 	display: flex;
-	justify-content: space-between;
-	&__window{
-		position: relative;
-  	width: 75%;
- 	  height: 95vh;
- 	  border: 1px solid black;
-		font-size: 50px;
-		text-align: center;
-		color: red;
-		&-ball{
-			width: 100px;
-  		height: 100px;
-  		border: 1px solid black;
-  		border-radius: 100%;
-  		transition: 0.5s transform;
-  		position: absolute;
-  		background-color: green;
-			visibility: hidden;
+	justify-content: space-around;
+	&__board{
+  	width: 500px;
+ 	  height: 500px;
+		display: grid;
+		grid-template-columns: repeat(10, 1fr);
+		grid-template-rows: repeat(10, 1fr);
+		grid-gap: 1px;
+		&-box{
+			border: 1px solid black;
+			width: 50px;
+			height: 50px;
+			&_blue{
+				background-color: blue;
+			}
 		}
 	}
 	&__actions{
 		width: 20%;
-		height: 95vh;
+		height: 500px;
 		border: 1px solid black;
-		&-btns{
+		&-start{
 			display: flex;
 			justify-content: space-between;
-			&_btn{
-				width: 45%;
-				height: 50px;
-				background-color: blueviolet;
-			}
-			&_select{
-				text-align: center;
-				width: 45%;
-				height: 50px;
-				background-color: blueviolet;
-			}
+		}
+		&-btn{
+			width: 45%;
+			height: 50px;
+			background-color: blueviolet;
+		}
+		&-timer{
+			text-align: center;
+			width: 45%;
+			height: 50px;
+			background-color: blueviolet;
 		}
 		&-score{
 			margin-top: 50px;

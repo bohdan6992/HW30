@@ -1,6 +1,7 @@
 const btn = document.querySelector('.game__actions-btn');
 const score = document.querySelector('.game__actions-score');
 const board = document.querySelector('.game__board');
+const timer = document.querySelector('.game__actions-timer');
 
 for(i = 0; i < 100; i++){
   let box = document.createElement('div');
@@ -14,6 +15,8 @@ const randomInteger = (min, max) => {
   let rand = min - 0.5 + Math.random() * (max - min + 1);
   return Math.round(rand);
 }
+
+let time = 59;
 
 let clickCount = 0;
 const startClikcFunc = () => {
@@ -30,42 +33,31 @@ const startClikcFunc = () => {
     score.innerText =`Youor score is : ${clickCount}`;
     randBox.removeEventListener("click", boxClikcFunc);
   }
+
+  const showSeconds = () => {
+    setInterval(() =>{
+      timer.innerText =`00:${time}`;
+      time--;
+      if(time === 0){
+        board.innerText = 'GAME OWER'
+      }
+    }, 1000)
+  }
+  //////
+  if(clickCount == 1 ){
+    showSeconds()
+  }else if (clickCount > 1 ){
+    setTimeout(showSeconds, 1000000)
+    console.log(clickCount)
+  }
+  /////////
   randBox.addEventListener("click", startClikcFunc);
   randBox.addEventListener("click", boxClikcFunc);
 }
 
 
 btn.addEventListener("click", startClikcFunc);
-
-  
-  // randBox.class.add()
-    
-
-  // `
-  // <div class="game__board-box_blue"></div>`
-  // const celectBlock = () => {
-  //   let randBlock = Math.floor((Math.random() * (100 - 1)) + 1);
-  //   ball.style.transform = `translate(${randX}px, ${randY}px)`;
-  // };
-
-  // let clickCount = 0;
-  // ball.addEventListener("mousedown", () => {
-  //   clickCount++;
-  //   score.innerText =`Youor score is : ${clickCount}`;
-  //   if (clickCount === 50){
-  //     wind.innerHTML =`
-  //     <h1>YOU WIN!!!</h1>
-  //     <input class="game__actions-reload" type="button" onclick="window.location.reload();" value="Try again" />`;
-  //     score.innerText ='GAME OWER';
-  //   }
-  //   ball.style.backgroundColor = 'red';
-  // });
-  // ball.addEventListener("mouseup", () => {
-  //   ball.style.backgroundColor = 'green';
-  // });
-
-  // setInterval(ballMoving, 1000);
-
+console.log(clickCount)
 
 
 

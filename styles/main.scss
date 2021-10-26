@@ -1,6 +1,10 @@
 .game{
 	display: flex;
 	justify-content: space-around;
+	&__ower{
+		font-size: 60px;
+		color: red;
+	}
 	&__board{
   	width: 500px;
  	  height: 500px;
@@ -20,7 +24,6 @@
 	&__actions{
 		width: 20%;
 		height: 500px;
-		border: 1px solid black;
 		&-start{
 			display: flex;
 			justify-content: space-between;
@@ -44,9 +47,40 @@
 		}
 		&-reload{
 			text-align: center;
-			width: 40%;
+			width: 100%;
 			height: 50px;
-			background-color: blueviolet;
+			border: none;
+			padding: 0 5px;
 		}
 	}
+}
+
+.popup {
+	margin-top: 100px;
+	margin-left: 50px;
+	position: relative;
+	display: inline-block;
+	cursor: pointer;
+}
+.popuptext {
+	visibility: hidden;
+	width: 160px;
+	background-color: #555;
+	color: #fff;
+	text-align: center;
+	border-radius: 6px;
+	padding: 16px 70px;
+	position: absolute;
+	z-index: 1;
+}
+
+.show {
+	visibility: visible;
+	animation: fadeIn 5s
+}
+
+
+@keyframes fadeIn {
+	from {opacity: 0;}
+	to {opacity:1 ;}
 }
